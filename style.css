@@ -33,9 +33,13 @@ h1 {
 }
 
 .work-item img {
-  width: 100%;
+  width: 90%;      
+  max-width: 220px; 
   display: block;
   border-radius: 4px;
+  margin: 0 auto;   
+}
+
 }
 
 .work-item h2 {
