@@ -13,25 +13,27 @@
       line-height: 1.6;
       background-color: #fff;
       color: #000;
+      text-align: left; /* linksbündig */
     }
 
-    /* Header */
+    /* Header-Link */
+    header a {
+      text-decoration: underline; /* Unterstrichen */
+      color: blue;                /* Standardfarbe */
+      font-weight: normal;        /* keine Überschrift */
+      font-size: 1rem;
+    }
+
+    /* Farbe nach Klick */
+    header a:visited {
+      color: purple; /* Farbe, wenn bereits besucht */
+    }
+
     header {
       margin-bottom: 2rem;
     }
 
-    header a {
-      text-decoration: none;
-      color: #333;
-      font-weight: bold;
-    }
-
     /* Main Content */
-    main {
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
     main p {
       margin: 0.5rem 0;
     }
