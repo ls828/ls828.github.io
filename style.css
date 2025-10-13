@@ -1,9 +1,11 @@
+
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Times New Roman', Times, serif; 
   margin: 0;
   padding: 0;
 }
 
+/* Header */
 header nav {
   display: flex;
   gap: 1rem;
@@ -16,11 +18,14 @@ header nav a {
   color: #333;
 }
 
+/* Hauptüberschrift */
 h1 {
   text-align: center;
   margin-top: 1rem;
+  font-family: 'Times New Roman', Times, serif; 
 }
 
+/* Grid für Projekte */
 .works-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -28,6 +33,7 @@ h1 {
   padding: 2rem;
 }
 
+/* Einzelnes Projekt */
 .work-item {
   text-align: center;
 }
@@ -40,13 +46,13 @@ h1 {
   margin: 0 auto;   
 }
 
-}
-
 .work-item h2 {
   margin: 0.5rem 0 0.2rem;
+  font-family: 'Times New Roman', Times, serif; /* Überschriften auch Times */
 }
 
 .work-item p {
   font-size: 0.9rem;
   color: #555;
+  font-family: 'Times New Roman', Times, serif; /* Fließtext auch Times */
 }
