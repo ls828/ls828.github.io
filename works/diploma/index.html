@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Diploma | Ludovico Scalmani</title>
   <style>
-    /* Allgemeine Gestaltung */
     body {
       font-family: 'Times New Roman', Times, serif;
       margin: 0;
@@ -36,7 +35,6 @@
       margin-bottom: 1rem;
     }
 
-    /* Galerie-Styling */
     .gallery {
       display: flex;
       flex-wrap: wrap;
@@ -46,15 +44,53 @@
     .gallery img {
       width: 30%;
       height: auto;
-      border-radius: 0px;
       cursor: pointer;
-      transition: transform 0.2s ease;
-      display: block
+    }
+
+    /* Lightbox */
+    #lightboxOverlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    #lightboxOverlay img {
+      max-width: 90%;
+      max-height: 90%;
+    }
+
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      font-size: 3rem;
+      color: white;
+      cursor: pointer;
+      user-select: none;
+      padding: 0 20px;
+      transform: translateY(-50%);
+    }
+
+    #lightboxPrev { left: 0; }
+    #lightboxNext { right: 0; }
+
+    #lightboxClose {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 2rem;
+      color: white;
+      cursor: pointer;
     }
 
   </style>
 </head>
-
 <body>
   <header>
     <a href="/works.html">← Back to Works</a>
@@ -65,31 +101,89 @@
     <h2>Schatten/shadows</h2>
     <p>Universität für angewandte Kunst Wien, Oskar Kokoschka Platz 2, 1010 Wien, Ferstl-Trakt, EG, Lichtof A</p>
     <p>Ausstellung/Exhibition: 18.- 29.06.2024</p>
-    <p>„Morgen sollt ich – auf immer schattenlos, um die Hand der Geliebten anhalten; ein banger Schlaf drückte mir gegen den Morgen die Augen zu.“</p>
+    <p>„Morgen sollt ich – auf immer schattenlos, um die Hand der Geliebten anhalten; ein banger Schlaf drückte mir gegen den Morgen die Augen zu.“</p>
     <p>Adelbert von Chamisso, Peter Schlemihls wundersame Geschichte, 1813</p>
-  
+
     <h2>
       <a href="/assets/diploma/DA_Schatten_Shadows_LS.pdf" target="_blank">
-      → Diploma Publication PDF
-        </a> 
+        → Diploma Publication PDF
+      </a>
     </h2>
     <h3>
       <a href="/assets/diploma/240618_DA_presentation_text.pdf" target="_blank">
-        → presentation text 18.06.2024 PDF (german) 
+        → presentation text 18.06.2024 PDF (german)
     </h3>
-    
+
     <div class="gallery">
-      <a href="/assets/diploma/diploma_1.jpeg" target="_blank"><img src="/assets/diploma/diploma_1.jpeg" alt="Diploma 1"></a>
-      <a href="/assets/diploma/diploma_2.jpeg" target="_blank"><img src="/assets/diploma/diploma_2.jpeg" alt="Diploma 2"></a>
-      <a href="/assets/diploma/diploma_3.jpeg" target="_blank"><img src="/assets/diploma/diploma_3.jpeg" alt="Diploma 3"></a>
-      <a href="/assets/diploma/diploma_4.jpeg" target="_blank"><img src="/assets/diploma/diploma_4.jpeg" alt="Diploma 4"></a>
-      <a href="/assets/diploma/diploma_5.jpeg" target="_blank"><img src="/assets/diploma/diploma_5.jpeg" alt="Diploma 5"></a>
-      <a href="/assets/diploma/diploma_6.jpeg" target="_blank"><img src="/assets/diploma/diploma_6.jpeg" alt="Diploma 6"></a>
-      <a href="/assets/diploma/diploma_7.jpeg" target="_blank"><img src="/assets/diploma/diploma_7.jpeg" alt="Diploma 7"></a>
-      <a href="/assets/diploma/diploma_8.jpeg" target="_blank"><img src="/assets/diploma/diploma_8.jpeg" alt="Diploma 8"></a>
-      <a href="/assets/diploma/diploma_9.jpeg" target="_blank"><img src="/assets/diploma/diploma_9.jpeg" alt="Diploma 9"></a>
-      <a href="/assets/diploma/diploma_12.jpeg" target="_blank"><img src="/assets/diploma/diploma_12.jpeg" alt="Diploma 12"></a>
+      <img src="/assets/diploma/diploma_1.jpeg" data-index="0" />
+      <img src="/assets/diploma/diploma_2.jpeg" data-index="1" />
+      <img src="/assets/diploma/diploma_3.jpeg" data-index="2" />
+      <img src="/assets/diploma/diploma_4.jpeg" data-index="3" />
+      <img src="/assets/diploma/diploma_5.jpeg" data-index="4" />
+      <img src="/assets/diploma/diploma_6.jpeg" data-index="5" />
+      <img src="/assets/diploma/diploma_7.jpeg" data-index="6" />
+      <img src="/assets/diploma/diploma_8.jpeg" data-index="7" />
+      <img src="/assets/diploma/diploma_9.jpeg" data-index="8" />
+      <img src="/assets/diploma/diploma_12.jpeg" data-index="9" />
     </div>
   </main>
+
+  <!-- Lightbox Overlay -->
+  <div id="lightboxOverlay">
+    <span id="lightboxClose">✕</span>
+    <span class="lightbox-nav" id="lightboxPrev">❮</span>
+    <img id="lightboxImage" src="" />
+    <span class="lightbox-nav" id="lightboxNext">❯</span>
+  </div>
+
+  <script>
+    const images = document.querySelectorAll('.gallery img');
+    const lightbox = document.getElementById('lightboxOverlay');
+    const lightboxImage = document.getElementById('lightboxImage');
+
+    let currentIndex = 0;
+
+    images.forEach(img => {
+      img.addEventListener('click', () => {
+        currentIndex = parseInt(img.dataset.index);
+        openLightbox();
+      });
+    });
+
+    function openLightbox() {
+      lightboxImage.src = images[currentIndex].src;
+      lightbox.style.display = 'flex';
+    }
+
+    function closeLightbox() {
+      lightbox.style.display = 'none';
+    }
+
+    function showNext() {
+      currentIndex = (currentIndex + 1) % images.length;
+      lightboxImage.src = images[currentIndex].src;
+    }
+
+    function showPrev() {
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      lightboxImage.src = images[currentIndex].src;
+    }
+
+    document.getElementById('lightboxClose').onclick = closeLightbox;
+    document.getElementById('lightboxNext').onclick = showNext;
+    document.getElementById('lightboxPrev').onclick = showPrev;
+
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (lightbox.style.display === 'flex') {
+        if (e.key === 'ArrowRight') showNext();
+        if (e.key === 'ArrowLeft') showPrev();
+        if (e.key === 'Escape') closeLightbox();
+      }
+    });
+  </script>
 </body>
 </html>
