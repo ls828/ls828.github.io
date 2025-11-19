@@ -144,10 +144,15 @@
     let currentIndex = 0;
 
     images.forEach(img => {
-      img.addEventListener('click', () => {
+      img.addEventListener('click', (e) => {
+        // falls das Bild in einem Link steckt: Standard-Navigation verhindern
+        if (e && typeof e.preventDefault === 'function') e.preventDefault();
+        if (e && typeof e.stopPropagation === 'function') e.stopPropagation();
+
         currentIndex = parseInt(img.dataset.index);
         openLightbox();
       });
+    });
     });
 
     function openLightbox() {
