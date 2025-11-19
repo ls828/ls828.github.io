@@ -47,48 +47,6 @@
       cursor: pointer;
     }
 
-    /* Lightbox */
-    #lightboxOverlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.9);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-    }
-
-    #lightboxOverlay img {
-      max-width: 90%;
-      max-height: 90%;
-    }
-
-    .lightbox-nav {
-      position: absolute;
-      top: 50%;
-      font-size: 3rem;
-      color: white;
-      cursor: pointer;
-      user-select: none;
-      padding: 0 20px;
-      transform: translateY(-50%);
-    }
-
-    #lightboxPrev { left: 0; }
-    #lightboxNext { right: 0; }
-
-    #lightboxClose {
-      position: absolute;
-      top: 20px;
-      right: 30px;
-      font-size: 2rem;
-      color: white;
-      cursor: pointer;
-    }
-
   </style>
 </head>
 <body>
@@ -116,80 +74,75 @@
     </h3>
 
     <div class="gallery">
-      <img src="/assets/diploma/diploma_1.jpeg" data-index="0" />
-      <img src="/assets/diploma/diploma_2.jpeg" data-index="1" />
-      <img src="/assets/diploma/diploma_3.jpeg" data-index="2" />
-      <img src="/assets/diploma/diploma_4.jpeg" data-index="3" />
-      <img src="/assets/diploma/diploma_5.jpeg" data-index="4" />
-      <img src="/assets/diploma/diploma_6.jpeg" data-index="5" />
-      <img src="/assets/diploma/diploma_7.jpeg" data-index="6" />
-      <img src="/assets/diploma/diploma_8.jpeg" data-index="7" />
-      <img src="/assets/diploma/diploma_9.jpeg" data-index="8" />
-      <img src="/assets/diploma/diploma_12.jpeg" data-index="9" />
+      <img src="/assets/diploma/diploma_1.jpeg" data-index="0" alt="Diploma 1" />
+      <img src="/assets/diploma/diploma_2.jpeg" data-index="1" alt="Diploma 2" />
+      <img src="/assets/diploma/diploma_3.jpeg" data-index="2" alt="Diploma 3" />
+      <img src="/assets/diploma/diploma_4.jpeg" data-index="3" alt="Diploma 4" />
+      <img src="/assets/diploma/diploma_5.jpeg" data-index="4" alt="Diploma 5" />
+      <img src="/assets/diploma/diploma_6.jpeg" data-index="5" alt="Diploma 6" />
+      <img src="/assets/diploma/diploma_7.jpeg" data-index="6" alt="Diploma 7" />
+      <img src="/assets/diploma/diploma_8.jpeg" data-index="7" alt="Diploma 8" />
+      <img src="/assets/diploma/diploma_9.jpeg" data-index="8" alt="Diploma 9" />
+      <img src="/assets/diploma/diploma_12.jpeg" data-index="9" alt="Diploma 12" />
     </div>
   </main>
 
-  <!-- Lightbox Overlay -->
-  <div id="lightboxOverlay">
-    <span id="lightboxClose">✕</span>
-    <span class="lightbox-nav" id="lightboxPrev">❮</span>
-    <img id="lightboxImage" src="" />
-    <span class="lightbox-nav" id="lightboxNext">❯</span>
-  </div>
+  <!-- Fullscreen Minimal Viewer -->
+<div id="fsViewer" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:black; justify-content:center; align-items:center; z-index:9999;">
+  <img id="fsImage" src="" style="max-width:90%; max-height:90%;" />
+</div>
 
-  <script>
-    const images = document.querySelectorAll('.gallery img');
-    const lightbox = document.getElementById('lightboxOverlay');
-    const lightboxImage = document.getElementById('lightboxImage');
+<script>
+  const galleryImgs = document.querySelectorAll('.gallery img');
+  const fsViewer = document.getElementById('fsViewer');
+  const fsImage = document.getElementById('fsImage');
+  let fsIndex = 0;
 
-    let currentIndex = 0;
+  galleryImgs.forEach(img => {
+    img.onclick = (e) => {
+      e.preventDefault();
+      fsIndex = parseInt(img.dataset.index);
+      openFS();
+    };
+  });
 
-    images.forEach(img => {
-      img.addEventListener('click', (e) => {
-        // falls das Bild in einem Link steckt: Standard-Navigation verhindern
-        if (e && typeof e.preventDefault === 'function') e.preventDefault();
-        if (e && typeof e.stopPropagation === 'function') e.stopPropagation();
+  function openFS(){
+    fsImage.src = galleryImgs[fsIndex].src;
+    fsViewer.style.display = 'flex';
+  }
 
-        currentIndex = parseInt(img.dataset.index);
-        openLightbox();
-      });
-    });
-    });
+  function closeFS(){ fsViewer.style.display = 'none'; }
+  function nextFS(){ fsIndex = (fsIndex+1) % galleryImgs.length; openFS(); }
+  function prevFS(){ fsIndex = (fsIndex-1+galleryImgs.length) % galleryImgs.length; openFS(); }
 
-    function openLightbox() {
-      lightboxImage.src = images[currentIndex].src;
-      lightbox.style.display = 'flex';
+  // CLICK NAVIGATION
+  fsViewer.addEventListener('click', (e) => {
+    const x = e.clientX;
+    if(x < window.innerWidth * 0.33) prevFS();
+    else if(x > window.innerWidth * 0.66) nextFS();
+    else closeFS();
+  });
+
+  // KEYBOARD
+  document.addEventListener('keydown', (e) => {
+    if(fsViewer.style.display === 'flex'){
+      if(e.key === 'ArrowRight') nextFS();
+      if(e.key === 'ArrowLeft') prevFS();
+      if(e.key === 'Escape') closeFS();
     }
+  });
 
-    function closeLightbox() {
-      lightbox.style.display = 'none';
-    }
+  // SWIPE SUPPORT
+  let touchStartX = 0;
+  fsViewer.addEventListener('touchstart', (e)=>{
+    touchStartX = e.changedTouches[0].screenX;
+  });
 
-    function showNext() {
-      currentIndex = (currentIndex + 1) % images.length;
-      lightboxImage.src = images[currentIndex].src;
-    }
-
-    function showPrev() {
-      currentIndex = (currentIndex - 1 + images.length) % images.length;
-      lightboxImage.src = images[currentIndex].src;
-    }
-
-    document.getElementById('lightboxClose').onclick = closeLightbox;
-    document.getElementById('lightboxNext').onclick = showNext;
-    document.getElementById('lightboxPrev').onclick = showPrev;
-
-    lightbox.addEventListener('click', (e) => {
-      if (e.target === lightbox) closeLightbox();
-    });
-
-    document.addEventListener('keydown', (e) => {
-      if (lightbox.style.display === 'flex') {
-        if (e.key === 'ArrowRight') showNext();
-        if (e.key === 'ArrowLeft') showPrev();
-        if (e.key === 'Escape') closeLightbox();
-      }
-    });
-  </script>
+  fsViewer.addEventListener('touchend', (e)=>{
+    let diff = e.changedTouches[0].screenX - touchStartX;
+    if(diff > 50) prevFS();
+    else if(diff < -50) nextFS();
+  });
+</script>
 </body>
 </html>
