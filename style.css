@@ -25,6 +25,12 @@ h1 {
   font-family: 'Times New Roman', Times, serif; 
 }
 
+.newsletter {
+  text-align: center;
+  margin-top: 5px;
+}
+
+
 /* Grid für Projekte */
 .works-grid {
   display: grid;
