@@ -43,7 +43,7 @@ nav li {
   font-weight: 500;
   font-size: 2rem;
   transition: all 0.3s ease;
-  border-radius: 0px;          /* optional: leicht abgerundet */
+  border-radius: 2px;          /* optional: leicht abgerundet */
 }
 
 /* Hover Effekt */
@@ -59,7 +59,7 @@ nav li {
   background-color: red;  /* rote Box */
   color: white;           /* Textfarbe */
   text-decoration: none;
-  border-radius: 0px;
+  border-radius: 2px;
   font-weight: 500;
   font-size: 2rem;
 }
