@@ -23,12 +23,14 @@ nav ul {
   list-style: none;
   padding: 0;
   margin: 0;
+  display: flex;
+  flex-direction: column;
   text-align: center;
 }
 
 nav li {
-  display: inline-block;       /* horizontal nebeneinander, wenn du willst */
-  margin: 10px;
+       
+  margin: 15px;
 }
 
 /* Boxen selbst */
