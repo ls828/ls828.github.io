@@ -41,6 +41,7 @@ nav li {
   color: black;                /* normale Schriftfarbe */
   text-decoration: none;
   font-weight: 500;
+  font-size: 2rem;
   transition: all 0.3s ease;
   border-radius: 0px;          /* optional: leicht abgerundet */
 }
@@ -60,6 +61,7 @@ nav li {
   text-decoration: none;
   border-radius: 0px;
   font-weight: 500;
+  font-size: 2rem;
 }
 
 .mail-link:hover {
@@ -72,6 +74,7 @@ h1 {
   text-align: center;
   margin-top: 1rem;
   font-family: 'Times New Roman', Times, serif; 
+  font-size: 2rem;
 }
 h2 {
   text-align: center;
