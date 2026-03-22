@@ -18,6 +18,19 @@ header nav a {
   color: #333;
 }
 
+.box-link {
+  display: inline-block;
+  padding: 15px 40px;
+  border: 2px solid transparent;
+  text-decoration: none;
+  color: black;
+  transition: all 0.3s ease;
+}
+
+.box-link:hover {
+  border: 2px solid #1e40ff;
+}
+
 /* Hauptüberschrift */
 h1 {
   text-align: center;
