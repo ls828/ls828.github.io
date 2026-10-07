@@ -61,6 +61,33 @@ nav li {
   box-shadow: 0 8px 20px rgba(0,0,0,0.2); /* optional: leichter Schatten */
 }
 
+/* Grüner Button für J.Schreiber */
+.jschreiber-link {
+  background-color: #20c928;
+  color: black;
+  text-shadow:
+    0 0 4px #39ff14,
+    0 0 8px #39ff14;
+  box-shadow:
+    0 0 8px #39ff14,
+    0 0 18px rgba(57, 255, 20, 0.8);
+}
+
+/* Hover-Effekt für J.Schreiber */
+.jschreiber-link:hover {
+  background-color: #39ff14;
+  color: white;
+  transform: scale(1.08);
+  text-shadow:
+    0 0 5px white,
+    0 0 12px #39ff14,
+    0 0 25px #39ff14;
+  box-shadow:
+    0 0 10px #39ff14,
+    0 0 25px #39ff14,
+    0 0 45px rgba(57, 255, 20, 0.9);
+}
+
 .mail-link {
   display: inline-block;
   padding: 20px 80px;     /* breiter als die anderen */
