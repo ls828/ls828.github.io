@@ -156,3 +156,52 @@ ul {
   color: #555;
   font-family: 'Times New Roman', Times, serif; /* Fließtext auch Times */
 }
+
+.portfolio-header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 2rem;
+  background: white;
+  border-bottom: 1px solid #ddd;
+}
+
+.portfolio-header a,
+.portfolio-footer a {
+  color: #333;
+}
+
+.portfolio-page h1 {
+  margin: 1.5rem 1rem;
+}
+
+.portfolio-pages {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  list-style: none;
+}
+
+.portfolio-pages li {
+  margin: 0 0 1.5rem;
+}
+
+.portfolio-pages img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.portfolio-footer {
+  padding: 1rem 2rem 2rem;
+  text-align: center;
+}
+
+@media (max-width: 480px) {
+  .portfolio-header {
+    padding: 1rem;
+  }
+}
