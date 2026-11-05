@@ -9,44 +9,27 @@
 <body>
   <header class="portfolio-header">
     <a href="index.html">← Home</a>
-    <a href="assets/2610_Portfolio.pdf" download>Download portfolio (PDF)</a>
+    <a href="assets/2610_Portfolio.pdf" target="_blank" rel="noopener noreferrer">Open portfolio (PDF)</a>
   </header>
 
   <main class="portfolio-page">
     <h1>Portfolio</h1>
-    <ol class="portfolio-pages" aria-label="Portfolio pages">
-      <li><img src="assets/portfolio_pages/page-01.jpg" alt="Portfolio page 1" width="1600" height="1131"></li>
-      <li><img src="assets/portfolio_pages/page-02.jpg" alt="Portfolio page 2" width="1600" height="1131" loading="lazy" decoding="async"></li>
-      <li><img src="assets/portfolio_pages/page-03.jpg" alt="Portfolio page 3" width="1600" height="1131" loading="lazy" decoding="async"></li>
-      <li><img src="assets/portfolio_pages/page-04.jpg" alt="Portfolio page 4" width="1600" height="1131" loading="lazy" decoding="async"></li>
-      <li><img src="assets/portfolio_pages/page-05.jpg" alt="Portfolio page 5" width="1600" height="1131" loading="lazy" decoding="async"></li>
-      <li><img src="assets/portfolio_pages/page-06.jpg" alt="Portfolio page 6" width="1600" height="1131" loading="lazy" decoding="async"></li>
-      <li><img src="assets/portfolio_pages/page-07.jpg" alt="Portfolio page 7" width="1600" height="1131" loading="lazy" decoding="async"></li>
-      <li><img src="assets/portfolio_pages/page-08.jpg" alt="Portfolio page 8" width="1600" height="1131" loading="lazy" decoding="async"></li>
-      <li><img src="assets/portfolio_pages/page-09.jpg" alt="Portfolio page 9" width="1600" height="1131" loading="lazy" decoding="async"></li>
-      <li><img src="assets/portfolio_pages/page-10.jpg" alt="Portfolio page 10" width="1600" height="1131" loading="lazy" decoding="async"></li>
-      <li><img src="assets/portfolio_pages/page-11.jpg" alt="Portfolio page 11" width="1600" height="1131" loading="lazy" decoding="async"></li>
-      <li><img src="assets/portfolio_pages/page-12.jpg" alt="Portfolio page 12" width="1600" height="1131" loading="lazy" decoding="async"></li>
-      <li><img src="assets/portfolio_pages/page-13.jpg" alt="Portfolio page 13" width="1600" height="1131" loading="lazy" decoding="async"></li>
-      <li><img src="assets/portfolio_pages/page-14.jpg" alt="Portfolio page 14" width="1600" height="1131" loading="lazy" decoding="async"></li>
-      <li><img src="assets/portfolio_pages/page-15.jpg" alt="Portfolio page 15" width="1600" height="1131" loading="lazy" decoding="async"></li>
-      <li><img src="assets/portfolio_pages/page-16.jpg" alt="Portfolio page 16" width="1600" height="1131" loading="lazy" decoding="async"></li>
-      <li><img src="assets/portfolio_pages/page-17.jpg" alt="Portfolio page 17" width="1600" height="1131" loading="lazy" decoding="async"></li>
-      <li><img src="assets/portfolio_pages/page-18.jpg" alt="Portfolio page 18" width="1600" height="1131" loading="lazy" decoding="async"></li>
-      <li><img src="assets/portfolio_pages/page-19.jpg" alt="Portfolio page 19" width="1600" height="1131" loading="lazy" decoding="async"></li>
-      <li><img src="assets/portfolio_pages/page-20.jpg" alt="Portfolio page 20" width="1600" height="1131" loading="lazy" decoding="async"></li>
-      <li><img src="assets/portfolio_pages/page-21.jpg" alt="Portfolio page 21" width="1600" height="1131" loading="lazy" decoding="async"></li>
-      <li><img src="assets/portfolio_pages/page-22.jpg" alt="Portfolio page 22" width="1600" height="1131" loading="lazy" decoding="async"></li>
-      <li><img src="assets/portfolio_pages/page-23.jpg" alt="Portfolio page 23" width="1600" height="1131" loading="lazy" decoding="async"></li>
-      <li><img src="assets/portfolio_pages/page-24.jpg" alt="Portfolio page 24" width="1600" height="1131" loading="lazy" decoding="async"></li>
-      <li><img src="assets/portfolio_pages/page-25.jpg" alt="Portfolio page 25" width="1600" height="1131" loading="lazy" decoding="async"></li>
-      <li><img src="assets/portfolio_pages/page-26.jpg" alt="Portfolio page 26" width="1600" height="1131" loading="lazy" decoding="async"></li>
-      <li><img src="assets/portfolio_pages/page-27.jpg" alt="Portfolio page 27" width="1600" height="1131" loading="lazy" decoding="async"></li>
-      <li><img src="assets/portfolio_pages/page-28.jpg" alt="Portfolio page 28" width="1600" height="1131" loading="lazy" decoding="async"></li>
-      <li><img src="assets/portfolio_pages/page-29.jpg" alt="Portfolio page 29" width="1600" height="1131" loading="lazy" decoding="async"></li>
-      <li><img src="assets/portfolio_pages/page-30.jpg" alt="Portfolio page 30" width="1600" height="1131" loading="lazy" decoding="async"></li>
-      <li><img src="assets/portfolio_pages/page-31.jpg" alt="Portfolio page 31" width="1600" height="1131" loading="lazy" decoding="async"></li>
-    </ol>
+    <section class="portfolio-viewer" aria-label="Portfolio PDF viewer">
+      <iframe
+        src="assets/2610_Portfolio.pdf#view=FitH"
+        title="Portfolio (PDF)"
+        allow="fullscreen"
+      >
+        <p>Your browser cannot display embedded PDFs.
+          <a href="assets/2610_Portfolio.pdf" target="_blank" rel="noopener noreferrer">Open the portfolio PDF</a>.
+        </p>
+      </iframe>
+    </section>
+    <p class="portfolio-open-link">
+      If the viewer does not work on your device,
+      <a href="assets/2610_Portfolio.pdf" target="_blank" rel="noopener noreferrer">open the PDF directly</a>
+      or <a href="assets/2610_Portfolio.pdf" download>download it</a>.
+    </p>
   </main>
 
   <footer class="portfolio-footer">

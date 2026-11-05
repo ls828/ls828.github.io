@@ -1,11 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-
   <url>
     <loc>https://ludovicoscalmani.com/</loc>
-    <lastmod>2026-04-04</lastmod>
-    <priority>1.0</priority>
   </url>
-
+  <url>
+    <loc>https://ludovicoscalmani.com/works.html</loc>
+    <lastmod>2026-11-05</lastmod>
+  </url>
+  <url>
+    <loc>https://ludovicoscalmani.com/works/diploma/</loc>
+  </url>
+  <url>
+    <loc>https://ludovicoscalmani.com/shows.html</loc>
+  </url>
+  <url>
+    <loc>https://ludovicoscalmani.com/uno_di_noi_gallery.html</loc>
+  </url>
+  <url>
+    <loc>https://ludovicoscalmani.com/bio.html</loc>
+  </url>
+  <url>
+    <loc>https://ludovicoscalmani.com/collages2025.html</loc>
+  </url>
+  <url>
+    <loc>https://ludovicoscalmani.com/selected_drawings_gallery.html</loc>
+  </url>
+  <url>
+    <loc>https://ludovicoscalmani.com/worksoncanvas.html</loc>
+  </url>
 </urlset>

@@ -170,21 +170,25 @@ ul {
   margin: 1.5rem 1rem;
 }
 
-.portfolio-pages {
+.portfolio-viewer {
   max-width: 1200px;
+  height: min(80vh, 1000px);
+  min-height: 480px;
   margin: 0 auto;
   padding: 0 1rem;
-  list-style: none;
 }
 
-.portfolio-pages li {
-  margin: 0 0 1.5rem;
-}
-
-.portfolio-pages img {
+.portfolio-viewer iframe {
   display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
+  border: 1px solid #ddd;
+}
+
+.portfolio-open-link {
+  margin: 1rem auto;
+  padding: 0 1rem;
+  text-align: center;
 }
 
 .portfolio-footer {
@@ -195,5 +199,11 @@ ul {
 @media (max-width: 480px) {
   .portfolio-header {
     padding: 1rem;
+  }
+
+  .portfolio-viewer {
+    height: 75svh;
+    min-height: 360px;
+    padding: 0 0.5rem;
   }
 }
